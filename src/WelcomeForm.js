@@ -64,8 +64,8 @@ const useStyles = makeStyles((theme) => ({
   },
   layout: {
     width: "auto",
-    marginLeft: theme.spacing(2),
-    marginRight: theme.spacing(2),
+    // marginLeft: theme.spacing(2),
+    // marginRight: theme.spacing(2),
     [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
       width: 600,
       marginLeft: "auto",
@@ -172,6 +172,8 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: "3rem",
     fontSize: "2rem",
     fontWeight: "500",
+    paddingTop:"20px",
+    paddingBottom:"20px"
   },
 
   BookButton: {
