@@ -76,11 +76,11 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(0),
     marginBottom: theme.spacing(3),
-    padding: theme.spacing(1),
+    // padding: theme.spacing(1),
     [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
       marginTop: theme.spacing(0),
       marginBottom: theme.spacing(2),
-      padding: theme.spacing(5),
+      // padding: theme.spacing(5),
     },
   },
   stepper: {
@@ -166,9 +166,12 @@ const useStyles = makeStyles((theme) => ({
   },
 
   pageTitle: {
-    color: theme.palette.secondary.main,
-    fontSize: "1.6rem",
-    fontWeight: "600",
+    backgroundColor: theme.palette.secondary.main,
+    color:"#fff",
+    width: "100%",
+    lineHeight: "3rem",
+    fontSize: "2rem",
+    fontWeight: "500",
   },
 
   BookButton: {
@@ -178,7 +181,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "1.3rem",
     color: "#fff",
     fontWeight: "600",
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: theme.palette.secondary.main,
     cursor: "pointer",
     padding: "10px 20px",
     marginTop: "20px",
@@ -257,6 +260,7 @@ export default function WelcomeForm() {
         phone: phone,
         faceToFaceConsultation: faceChecked,
         telephoneConsultation: telChecked,
+        referrer: state.referrer
       };
       const res = await BookService.bookConsultation(payload);
       setSaving(false);
@@ -299,15 +303,19 @@ export default function WelcomeForm() {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              marginBottom: "20px",
+              // marginBottom: "20px",
+
             }}
           >
-            <span className={classes.pageTitle}> Book a Consultation </span>
+            <span className={classes.pageTitle}> Request a Callback </span>
           </div>
+
+          <div style={{padding:"30px"}}> 
+
 
           <Grid
             container
-            spacing={2}
+            spacing={3}
             alignItems="baseline"
             style={{ marginTop: "10px" }}
           >
@@ -355,80 +363,16 @@ export default function WelcomeForm() {
               />
             </Grid>
           </Grid>
-          <div
-            style={{
-              marginTop: "20px",
-              color: "#555",
-              fontSize: "1rem",
-              width: "100%",
-              textAlign: "left",
-              lineHeight: "1.5rem",
-            }}
-          >
-            Please choose your preference consultation:
-          </div>
-
-          <div
-            style={{
-              marginTop: "10px",
-              color: "#777",
-              fontSize: "1rem",
-              width: "100%",
-              textAlign: "left",
-            }}
-          >
-            <FormControlLabel
-              control={
-                <Checkbox
-                  color="primary"
-                  name="check1"
-                  checked={faceChecked}
-                  onChange={faceCheckClicked}
-                />
-              }
-              label={
-                <span style={{ fontSize: "1rem", color: "#999" }}>
-                  {`Face to Face Consultation`}
-                </span>
-              }
-            />
-          </div>
-
-          <div
-            style={{
-              marginTop: "0px",
-              color: "#777",
-              fontSize: "1rem",
-              width: "100%",
-              textAlign: "left",
-            }}
-          >
-            <FormControlLabel
-              control={
-                <Checkbox
-                  color="primary"
-                  name="check2"
-                  checked={telChecked}
-                  onChange={telCheckClicked}
-                />
-              }
-              label={
-                <span style={{ fontSize: "1rem", color: "#999" }}>
-                  {`Telephone Consultation`}
-                </span>
-              }
-            />
-          </div>
 
           <div className={classes.BookButton} onClick={bookClicked}>
-            Book Consultation
+            Book Your Callback
           </div>
 
           <div
             style={{
               marginTop: "20px",
-              color: "#999",
-              fontSize: "0.8rem",
+              color: "#777",
+              fontSize: "0.9rem",
               width: "100%",
               textAlign: "left",
             }}
@@ -443,6 +387,8 @@ export default function WelcomeForm() {
             >
               Privacy Policy
             </a>
+          </div>
+
           </div>
 
           <Backdrop className={classes.backdrop} open={saving}>
